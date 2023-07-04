@@ -1,3 +1,8 @@
+import { notFound } from 'next/navigation';
+import { getProduct, getProducts } from '@/service/products';
+
+export const revalidate = 3;
+
 type Props = {
   params: {
     slug: string;
@@ -10,8 +15,15 @@ export function generateMetadata({ params }: Props) {
   };
 }
 
-export default function pants({ params }: Props) {
-  return <div>{params.slug} 제품 소개 페이지</div>;
+export default async function ProductPage({ params: { slug } }: Props) {
+  const product = await getProduct(slug);
+
+  if (!product) {
+    notFound();
+    // not-found.tsx 보여줌
+  }
+
+  return <div>{product.name} 제품 소개 페이지</div>;
 }
 
 /**
@@ -33,11 +45,12 @@ export default function pants({ params }: Props) {
 */
 
 // 빌드힐때 SSG로 만드냐 아니면 사용자가 해당 경로로 들어왔을때 SSR로 하냐의 차이
-export function generateStaticParams() {
-  const products = ['pants', 'skirt'];
+export async function generateStaticParams() {
+  // 모든 제품의 페이지들을 미리 만들어 둘 수 있게 해줄거임 (SSG)
+  const products = await getProducts();
   return products.map((product) => {
     return {
-      slug: product,
+      slug: product.id,
     };
   });
 }
