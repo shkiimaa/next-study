@@ -1,5 +1,6 @@
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { getProduct, getProducts } from '@/service/products';
+import GoProductsButton from '@/components/GoProductsButton';
 import Image from 'next/image';
 
 export const revalidate = 3;
@@ -20,7 +21,8 @@ export default async function ProductPage({ params: { slug } }: Props) {
   const product = await getProduct(slug);
 
   if (!product) {
-    notFound();
+    redirect('/products'); // 로그인 유무에 따른 페이지 사용시 사용하기 좋다.
+    // notFound();
     // not-found.tsx 보여줌
   }
 
@@ -33,6 +35,7 @@ export default async function ProductPage({ params: { slug } }: Props) {
         width={400}
         height={400}
       />
+      <GoProductsButton />
     </>
   );
 }
