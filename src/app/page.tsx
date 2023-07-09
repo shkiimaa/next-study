@@ -7,7 +7,7 @@ export default function Home() {
   /* const [name, setName] = useState(''); // 사용 불가 */
   return (
     <>
-      <h1>홈페이지 경로</h1>
+      <h1>홈페이지 경로 버전2</h1>
       {/* 외부 이미지를 사용할땐 next.config에서 설정을 해줘야한다.
           이미지 width 와 height값을 미리 지정해두기 때문에 레이아웃쉬프트가 발생하지 않는다.
       */}
