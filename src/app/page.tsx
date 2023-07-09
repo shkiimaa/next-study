@@ -8,6 +8,13 @@ export default function Home() {
   return (
     <>
       <h1>홈페이지 경로</h1>
+      {/* 외부 이미지를 사용할땐 next.config에서 설정을 해줘야한다. */}
+      <Image
+        src={`https://images.unsplash.com/photo-1441986300917-64674bd600d8`}
+        alt="shop"
+        width={400}
+        height={400}
+      />
       <Counter></Counter>
     </>
   );
