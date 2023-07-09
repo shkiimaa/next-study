@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getProduct, getProducts } from '@/service/products';
+import Image from 'next/image';
 
 export const revalidate = 3;
 
@@ -23,7 +24,17 @@ export default async function ProductPage({ params: { slug } }: Props) {
     // not-found.tsx 보여줌
   }
 
-  return <div>{product.name} 제품 소개 페이지</div>;
+  return (
+    <>
+      <h1>{product.name} 제품 소개 페이지</h1>
+      <Image
+        src={`/images/${product.image}`}
+        alt="product.name"
+        width={400}
+        height={400}
+      />
+    </>
+  );
 }
 
 /**

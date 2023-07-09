@@ -26,8 +26,10 @@ export default async function ProductsPage() {
   return (
     <>
       <h1>제품 소개 페이지</h1>
-      <Image src={clothesImage} alt="Clothes" />
-      {/* 이미지 태그는 자동으로 리사이징되고 뷰사이즈에 따라 최적화된 이미지를 보여준다. */}
+      <Image src={clothesImage} alt="Clothes" priority />
+      {/* 이미지 태그는 자동으로 리사이징되고 뷰사이즈에 따라 최적화된 이미지를 보여준다. 
+          priority를 주면 next에서 가장 먼저 해당 이미지를 다운로드한다.
+      */}
       <ul>
         {products.map((product) => {
           return (
