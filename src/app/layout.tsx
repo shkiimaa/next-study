@@ -7,6 +7,7 @@ import { Nanum_Gothic } from 'next/font/google';
 
 const sans = Open_Sans({ subsets: ['latin'] });
 const gothic = Nanum_Gothic({ subsets: ['latin'], weight: '700' });
+//next font는 자동으로 호스팅하기에 cdn으로 불러온 것과 다르게 레이아웃 쉬프트가 일어나지 않음
 
 export const metadata: Metadata = {
   title: '멋진 제품 사이트',
