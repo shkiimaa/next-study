@@ -24,6 +24,14 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/item/:slug', //대체할 url
+        destination: '/products/:slug', // 원본 url
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
