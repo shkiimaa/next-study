@@ -16,6 +16,8 @@ export default function MeowArticle() {
       .then((data) => setText(data.data[0]));
   }, []);
 
+  console.log('');
+
   return (
     <>
       <p>CSR</p>
